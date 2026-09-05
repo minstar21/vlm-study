@@ -1,0 +1,18 @@
+{
+  "data_root": "/nas/datahub/min/vlm-foundation-7days",
+  "model_id": "Qwen/Qwen3-VL-2B-Instruct",
+  "image_relative_path": "images/example.jpg",
+  "inference": {
+    "max_new_tokens": 256,
+    "allow_download": false
+  },
+  "lora": {
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj"],
+    "max_steps": 20,
+    "execute": false
+  }
+}
+

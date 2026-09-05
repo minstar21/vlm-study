@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vlm-foundation-7days"
+version = "0.1.0"
+description = "Seven-day implementation-first VLM course centered on Qwen3-VL."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = ["numpy>=1.26"]
+
+[project.optional-dependencies]
+notebook = ["ipykernel>=6.29", "jupyterlab>=4.2", "matplotlib>=3.8", "pillow>=10.3"]
+models = [
+  "torch>=2.5",
+  "torchvision>=0.20",
+  "transformers>=4.57.0",
+  "accelerate>=1.0",
+  "qwen-vl-utils==0.0.14",
+]
+train = ["peft>=0.14", "safetensors>=0.4"]
+dev = ["pytest>=8.0", "ruff>=0.9"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vlm_foundation"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["notebooks", "tools"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
